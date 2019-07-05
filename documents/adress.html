@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width" initial-scale="1.0">
+  <title>Document</title>
+  <link rel="icon" href="" type="image/png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/media.css">
+  <script src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="header-content">
+        <div class="content-holder flex-c">
+          <div class="wrapper flex-c">
+            <a href="/" class="header-logo">
+              <img src="../img/logo.png" alt="">
+            </a>
+            <div class="hamburger active--border" :class="{ active: (isActiveMenu == 'menu') }" @click="toggleClass('menu')">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <ul class="header-filter flex-c">
+              <li class="header-filter__item">
+                <a href="#" class="title">Big Back Patches</a>
+              </li>
+              <li class="header-filter__item">
+                <a href="#" class="title">Black Metal</a></li>
+              <li class="header-filter__item">
+                <a href="#" class="title">Rock Thrash Heavy Doom</a></li>
+              <li class="header-filter__item">
+                <a href="#" class="title">Viking Patches</a></li>
+              <li class="header-filter__item">
+                <a href="#" class="title">T-Shirts</a>
+              </li>
+              <li class="header-filter__item dropdown-item active--border" :class="{ active: (isActiveMenu == 'all') }" @click="toggleClass('all')">
+                <span class="title dsc-title">all</span>
+                <span class="title tablet-title">collections</span>
+                <span class="title mobile-title"><i class="icon-collection"></i></span>
+              </li>
+            </ul>
+            <ul class="header-nav flex-c">
+              <li class="header-nav__item item-bag items">
+                <a href="#" data-product="1"><i class="icon-bag"></i></a>
+              </li>
+              <li class="header-nav__item active--border" :class="{ active: (isActiveMenu == 'search') }" @click="toggleClass('search')">
+                <span class="title"><i class="icon-search"></i></span>
+              </li>
+              <li class="header-nav__item dropdown-item active--border account-dropdown" :class="{ active: (isActiveMenu == 'account') }">
+                <span class="title" @click="toggleClass('account')"><i class="icon-person"></i></span>
+                <ul class="nav-dropdown">
+                  <li class="nav-dropdown__item" @click="toggleClass('login'),hideScroll()">
+                    <a href="#">log in</a>
+                  </li>
+                  <li class="nav-dropdown__item" @click="toggleClass('create'),hideScroll()">
+                    <a href="#">create an account</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="header-nav__item dropdown-item active--border lang-dropdown" :class="{ active: (isActiveMenu == 'lang') }" @click="toggleClass('lang')">
+                <span class="title"><i class="icon-planet"></i></span>
+                <ul class="nav-dropdown">
+                  <li class="nav-dropdown__item active">
+                    <a href="#">eng</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">fra</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">deu</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">spa</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">swe</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">fin</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="notification ">
+              <p class="title">You added this product to the cart</p>
+              <i class="remove-item icon-uniE10A"></i>
+              <div class="item-bag__card">
+                <div class="flex-c">
+                  <a href="#" class="content flex-c">
+                    <img src="../img/product.png" alt="">
+                    <p class="name">Big Back patch Thor's Hammer & Ravens Viking Mjolnir</p>
+                  </a>
+                  <p class="price">US $25.91</p>
+                </div>
+              </div>
+              <div class="item-bag__card">
+                <div class="flex-c">
+                  <a href="#" class="content flex-c">
+                    <img src="../img/product.png" alt="">
+                    <p class="name">Big Back patch Thor's Hammer & Ravens Viking Mjolnir</p>
+                  </a>
+                  <p class="price">US $25.91</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-content" :class="{active: (isActiveMenu == 'menu')}">
+          <div class="wrapper">
+            <div class="hambuger-menu flex-s ct-prt">
+              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+                <img src="../img/payment.svg" alt="">
+                <p class="title">payment & delivery</p>
+                <span class="text">Find out everything about the payment and delivery of the purchase</span>
+              </a>
+              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+                <img src="../img/contact.svg" alt="">
+                <p class="title">contact</p>
+                <span class="text">Here you can always contact us if you have any questions </span>
+              </a>
+              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+                <img src="../img/faq.svg" alt="">
+                <p class="title">FAQ</p>
+                <span class="text">We have prepared a list of frequently asked questions and answers to them</span>
+              </a>
+              <div class="hambuger-menu__element mobile-lang ct33" :class="{active: mobileLang}">
+                <p class="title" @click="mobileLang = !mobileLang">language</p>
+                <ul class="lang-dropdown">
+                  <li class="nav-dropdown__item active">
+                    <a href="#">eng</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">fra</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">deu</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">spa</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">swe</a>
+                  </li>
+                  <li class="nav-dropdown__item">
+                    <a href="#">fin</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-content" :class="{active: (isActiveMenu == 'all')}">
+          <div class="wrapper">
+            <div class="filters-menu flex-s ct-prt">
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">all</p>
+                <span class="text">607 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Other patches</p>
+                <span class="text">14 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Irish Patches</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Black Metal & Other</p>
+                <span class="text">204 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">T-Shirts</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Little patches</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Rock Trash heavy doom</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Bikers Patches</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Flags</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Big Back Patch</p>
+                <span class="text">4 items</span>
+              </a>
+              <a href="#" class="filters-menu__item dropdown-hover ct33">
+                <p class="title">Viking Patch</p>
+                <span class="text">4 items</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-content search-dropdown" :class="{active: (isActiveMenu == 'search')}">
+          <div class="wrapper">
+            <form action="" method="post" class="search-menu">
+              <label class="searh-label form-label">
+                <input type="text" class="form-input" placeholder="Search by keyword, name or collection">
+                <button class="wb-btn">search</button>
+              </label>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="wrapper">
+        <ul class="breadcrumbs">
+          <li class="breadcrumbs__item">
+            <a href="#">Main</a>
+          </li>
+          <li class="breadcrumbs__item">
+            <a>Address book</a>
+          </li>
+        </ul>
+      </div>
+      <div class="wrapper">
+        <div class="page-title flex-c">Address book
+          <div class="buttons" @click="toggleClass('accountAside')">
+            <i v-if="isActiveMenu != 'accountAside'" class="icon-aside"></i>
+            <i v-else class="icon-uniE10A"></i>
+          </div>
+        </div>
+        <div class="block-account flex-s">
+          <div class="block-account__content">
+            <div class="adress-book">
+              <ul>
+                <li class="sb24">03540, Alicante, Locutor Vicente Hipólito 39 </li>
+                <li class="sb24">03540, Barcelona, Vicente Hipólito 103 </li>
+              </ul>
+            </div>
+          </div>
+          <aside class="block-account__aside" :class="{active : (isActiveMenu == 'accountAside' )}">
+            <div class="account-menu">
+              <a href="account.html" class="account-menu__main">My account</a>
+              <ul class="account-menu__list">
+                <li><a href="personal-info.html">Edit personal info</a></li>
+                <li><a href="change-pass.html">Change password</a></li>
+              </ul>
+            </div>
+            <div class="account-menu">
+              <a class="account-menu__main active">Address book</a>
+              <ul class="account-menu__list">
+                <li><a href="edit-adress.html">Edit addresses</a></li>
+                <li><a href="new-adress.html">Add new address</a></li>
+              </ul>
+            </div>
+            <div class="account-menu">
+              <a href="order-history.html" class="account-menu__main">Order history</a>
+            </div>
+            <div class="log-out">
+              <a href="#">Log out</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="wrapper flex-s">
+        <div class="footer-content flex-s">
+          <ul class="content-list">
+            <li class="content-list__title">
+              <p class="title">Our contacts</p>
+            </li>
+            <li class="content-list__item">
+              <p class="text">Owner: Vitaliy</p>
+            </li>
+            <li class="content-list__item">
+              <p class="text">Moscow, Russia</p>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="mailto:oldowl.info@gmail.com">oldowl.info@gmail.com</a>
+            </li>
+          </ul>
+          <ul class="content-list">
+            <li class="content-list__title">
+              <p class="title">Collections</p>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Big Back Patches</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Black Metal & Other</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Rock Thrash Heavy Doom</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Viking Patches</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">T-Shirts</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-logo">
+          <img src="../img/footer-logo.png" alt="">
+          <ul class="social-buttons flex-c">
+            <li class="social-buttons__item">
+              <a href="#"><i class="icon-facebook"></i></a>
+            </li>
+            <li class="social-buttons__item">
+              <a href="#"><i class="icon-twitter"></i></a>
+            </li>
+            <li class="social-buttons__item">
+              <a href="#"><i class="icon-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-content flex-s">
+          <ul class="content-list">
+            <li class="content-list__title">
+              <p class="title">Menu</p>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Home</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Shop</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Payment & Delivery</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Contacts</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">FAQ</a>
+            </li>
+          </ul>
+          <ul class="content-list">
+            <li class="content-list__title">
+              <p class="title">Account</p>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">My Account</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Order History</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">My shopping bag</a>
+            </li>
+            <li class="content-list__item">
+              <a class="link" href="">Log out</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy flex-c-c">
+        <span>Copyright © 2019 Oldowlembr. All Rights Reserved.</span>
+        <a href="#">Privacy policy</a>
+        <a href="#">Site-map</a>
+      </div>
+    </footer>
+  </div>
+  <script src="../js/script.js"></script>
+</body>
+</html>
