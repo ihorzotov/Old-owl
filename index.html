@@ -44,7 +44,7 @@
             </ul>
             <ul class="header-nav flex-c">
               <li class="header-nav__item item-bag items">
-                <a href="#" data-product="1"><i class="icon-bag"></i></a>
+                <a href="#" :data-product="productLenght"><i class="icon-bag"></i></a>
               </li>
               <li class="header-nav__item active--border" :class="{ active: (isActiveMenu == 'search') }" @click="toggleClass('search')">
                 <span class="title"><i class="icon-search"></i></span>
@@ -268,287 +268,6 @@
           </div>
         </div>
       </div>
-
-<!--       <div class="section-slider blk-margin">
-        <div class="wrapper">
-          <p class="wb-title">the latest</p>
-          <section class="slider flex-c">
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">-40%</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="old-price">US $40.91</p>
-                  <p class="current-price sb24">$32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">-40%</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="old-price">US $40.91</p>
-                  <p class="current-price sb24">$32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">-40%</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="old-price">US $40.91</p>
-                  <p class="current-price sb24">$32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-          </section>
-          <div class="section-slider__nav">
-            <div class="slider-control flex-c-c">
-              <button class="slider-button btn-prev"><i class="icon-uniE935"></i></button>
-              <div class="slider-control__steps">
-                <span class="current">1</span>
-                <span class="lenght">12</span>
-              </div>
-              <button class="slider-button btn-next"><i class="icon-uniE935"></i></button>
-            </div>
-            <a href="#" class="link">To the shop</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-slider blk-margin">
-        <div class="wrapper">
-          <p class="wb-title">special offers</p>
-          <section class="slider flex-c">
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">-40%</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="old-price">US $40.91</p>
-                  <p class="current-price sb24">$32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-          </section>
-          <div class="section-slider__nav">
-            <div class="slider-control flex-c-c">
-              <button class="slider-button btn-prev"><i class="icon-uniE935"></i></button>
-              <div class="slider-control__steps">
-                <span class="current">1</span>
-                <span class="lenght">12</span>
-              </div>
-              <button class="slider-button btn-next"><i class="icon-uniE935"></i></button>
-            </div>
-            <a href="#" class="link">To the shop</a>
-          </div>
-        </div>
-      </div>
-      <div class="section-slider blk-margin">
-        <div class="wrapper">
-          <p class="wb-title">most popular</p>
-          <section class="slider flex-c">
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">-40%</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="old-price">US $40.91</p>
-                  <p class="current-price sb24">$32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-            <div class="product-card">
-              <a href="#" class="link">
-                <div class="product-card__img" style="background-image: url(img/product.png);">
-                  <p class="action-label flex-c-c">new</p>
-                </div>
-                <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-              </a>
-              <div class="product-card__order flex-c">
-                <div class="price flex-c">
-                  <p class="current-price sb24">US $32.91</p>
-                </div>
-                <button class="buy-btn"><i class="icon-bag"></i></button>
-              </div>
-            </div>
-          </section>
-          <div class="section-slider__nav">
-            <div class="slider-control flex-c-c">
-              <button class="slider-button btn-prev"><i class="icon-uniE935"></i></button>
-              <div class="slider-control__steps">
-                <span class="current">1</span>
-                <span class="lenght">12</span>
-              </div>
-              <button class="slider-button btn-next"><i class="icon-uniE935"></i></button>
-            </div>
-            <a href="#" class="link">To the shop</a>
-          </div>
-        </div>
-      </div>
--->
 <!-- el.className -->
     <slider class="product-margin" slider-name="the latest">
       <template v-slot:slider-content>
@@ -563,63 +282,22 @@
       </template>
     </slider>
 
-    <div class="section-slider blk-margin">
-      <div class="wrapper">
-        <p class="wb-title">collections</p>
-        <section class="slider flex-c">
-          <div class="ct50">
-            <a href="#" class="collections-card flex-c">
-              <div class="collections-card__img" style="background-image: url(img/product.png);"></div>
-              <div class="collections-card__content">
-                <h2 class="title sb24">Big Back Patches</h2>
-                <p class="quantity">148 items</p>
-                <span class="link flex-c">View collection <i class="icon-uniE935"></i></span>
-              </div>
-            </a>
-            <a href="#" class="collections-card flex-c">
-              <div class="collections-card__img" style="background-image: url(img/product.png);"></div>
-              <div class="collections-card__content">
-                <h2 class="title sb24">Big Back Patches</h2>
-                <p class="quantity">148 items</p>
-                <span class="link flex-c">View collection <i class="icon-uniE935"></i></span>
-              </div>
-            </a>
-          </div>
-          <div class="ct50">
-            <a href="#" class="collections-card flex-c">
-              <div class="collections-card__img" style="background-image: url(img/product.png);"></div>
-              <div class="collections-card__content">
-                <h2 class="title sb24">Big Back Patches</h2>
-                <p class="quantity">148 items</p>
-                <span class="link flex-c">View collection <i class="icon-uniE935"></i></span>
-              </div>
-            </a>
-            <a href="#" class="collections-card flex-c">
-              <div class="collections-card__img" style="background-image: url(img/product.png);"></div>
-              <div class="collections-card__content">
-                <h2 class="title sb24">Big Back Patches</h2>
-                <p class="quantity">148 items</p>
-                <span class="link flex-c">View collection <i class="icon-uniE935"></i></span>
-              </div>
-            </a>
-          </div>
-        </section>
-        <div class="section-slider__nav">
-          <div class="slider-control flex-c-c">
-            <button class="slider-button btn-prev"><i class="icon-uniE935"></i></button>
-            <div class="slider-control__steps">
-              <span class="current">1</span>
-              <span class="lenght">12</span>
-            </div>
-            <button class="slider-button btn-next"><i class="icon-uniE935"></i></button>
-          </div>
-          <a href="#" class="link">To the shop</a>
-        </div>
-      </div>
-    </div>
-
-    <slider class="slider-reviews" slider-name="our happy clients">
-      <template v-slot:slider-content="el">
+    <slider class="collection-margin" slider-name="collections">
+      <template v-slot:slider-content>
+        <collectioncard
+          v-for="(item, index) in collections"
+          :data-collection="item"
+          :key="index"
+          >
+        </collectioncard>
+      </template>
+    </slider>
+    <slider 
+      class="slider-reviews" 
+      slider-name="our happy clients" 
+      :data-desktop='3'
+    >
+      <template #slider-content="el">
         <reviewCard
           v-on:change="hideScroll"
           v-for="(review, index) in reviews"
@@ -628,69 +306,11 @@
           :key="index"
           :data-class="el.slideClasses[index]">
         </reviewCard>
-
-<!--         <reviewCard
-          v-on:change="hideScroll"
-          data-name="Maria Jane Smith"
-          data-image="img/reviews.png" 
-          data-text="a">
-        </reviewCard> -->
-
-<!--         <div v-for="(item, index) in items" class="product-card" v-bind:class="{current: isBetween(index)}">
-          <a href="#" class="link">
-            <div class="product-card__img" style="background-image: url(img/product.png);">
-              <p class="action-label flex-c-c">new</p>
-            </div>
-            <p class="text">{{ item.title }} Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
-          </a>
-          <div class="product-card__order flex-c">
-            <div class="price flex-c">
-              <p class="current-price sb24">US $32.91</p>
-            </div>
-            <button class="buy-btn"><i class="icon-bag"></i></button>
-          </div>
-        </div> -->
       </template>
       <template v-slot:link>
         <span class="link" @click="toggleClass('review'),hideScroll()">Leave feedback</span>
       </template>
     </slider>
-
-
-
-<!--     <div class="section-slider blk-margin slider-reviews">
-      <div class="wrapper">
-        <p class="wb-title">our happy clients</p>
-        <section class="slider flex-c">
-          <div class="reviews-card ct33" :class="{ active: (isActiveMenu == 'reviews') }">
-            <div class="reviews-container">
-              <div class="reviews-container__content">
-                <p class="title">Name of patch:</p>
-                <h2 class="name">Patch Bloodbath Death Metal band Patch Bloodbath Death Metal band</h2>
-                <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                <span class="show-more" @click="toggleClass('reviews')"></span>
-              </div>
-            </div>
-            <div class="reviews-person">
-              <div class="reviews-person__img" style="background-image: url(img/reviews.png);"></div>
-              <p class="reviews-person__name">Maria Jane Smith</p>
-            </div>
-          </div>
-        </section>
-        <div class="section-slider__nav">
-          <div class="slider-control flex-c-c">
-            <button class="slider-button btn-prev"><i class="icon-uniE935"></i></button>
-            <div class="slider-control__steps">
-              <span class="current">1</span>
-              <span class="lenght">12</span>
-            </div>
-            <button class="slider-button btn-next"><i class="icon-uniE935"></i></button>
-          </div>
-          <a href="#" class="link">To the shop</a>
-        </div>
-      </div>
-    </div >-->
-
     <form action="" method="post" class="block-subscribe blk-margin">
       <div class="thx-block"><!-- active -->
         <p class="thx-block__title">Thank You!</p>

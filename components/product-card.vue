@@ -1,16 +1,17 @@
 <template>
   <div class="product-card">
     <a href="#" class="link">
-      <div class="product-card__img" style="background-image: url(img/product.png);">
-        <p class="action-label flex-c-c">new</p>
+      <div class="product-card__img" :style="{backgroundImage: 'url(' + item.img + ')'}">
+        <p class="action-label flex-c-c" v-if="item.action && item.action !=''">{{item.action}}</p>
       </div>
-      <p class="text">Big Back patch Thor's Hammer & Ravens Viking Mjolnir Big Back patch Thor's Hammer & Ravens Viking Mjolnir </p>
+      <p class="text">{{item.name}}</p>
     </a>
     <div class="product-card__order flex-c">
       <div class="price flex-c">
-        <p class="current-price sb24">US $32.91</p>
+        <p class="old-price" v-if="item.oldPrice && item.oldPrice !=''">{{item.oldPrice}}</p>
+        <p class="current-price sb24">{{item.price}}</p>
       </div>
-      <button class="buy-btn"><i class="icon-bag"></i></button>
+      <button @click="buy" class="buy-btn"><i class="icon-bag"></i></button>
     </div>
   </div>
 </template>
@@ -29,6 +30,9 @@
     mounted: function(){
     },
     methods: {
+      buy:function(){
+        this.$parent.$parent.productLenght++
+      },
     },
   }
 </script>

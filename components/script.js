@@ -2,6 +2,7 @@ import slider from './slider.vue';
 import reviewcard from './review-card.vue';
 import {default as toggle} from '../vue-mixins/toggleClass.js';
 import productcard from './product-card.vue';
+import collectioncard from './collection-card.vue';
 import selectmenu from './select-menu.vue';
 import selectsearch from './select-search.vue';
 
@@ -13,6 +14,7 @@ var app = new Vue({
       productcard,
       selectmenu,
       selectsearch,
+      collectioncard,
     },
     data:{
       isScroll:false,
@@ -38,39 +40,54 @@ var app = new Vue({
       ],
       collections: [
         {
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'123',
+          quantity:1,
         },
         {
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'',
+          quantity:2,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'',
+          quantity:3,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'',
+          quantity:4,
         },
       ],
       products: [
         {
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
-        },{
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
-        },{
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
-        },{
-          name: 'Maria Jane Smith',
-          img: './img/reviews.png',
-          text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
-          title:'Patch Bloodbath Death Metal band',
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          oldPrice:'US $40.91',
+          price:'$32.91',
+          action:'-40%',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          price:'US $32.91',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          oldPrice:'US $40.91',
+          price:'$32.91',
+          action:'new',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          price:'US $32.91',
         },
       ],
       currentImage: 0,
@@ -160,6 +177,7 @@ var app = new Vue({
       cartRemoved:[],
       recepient: 'user',
       address:'user-address',
+      productLenght:0,
     },
     mixins: [toggle],
     mounted: function(){
@@ -203,6 +221,16 @@ var app = new Vue({
         }
       },
     },
+    watch:{
+      cart:{
+        handler:function(){
+          this.productLenght = this.cart.reduce(function(total, product){
+            return total + parseInt(product.amount);
+          }, 0);
+        },
+        deep:true,
+      }
+    },
     computed: {
       inputType: function(){
         return (this.typeChange == true)? 'text' : 'password';
@@ -211,7 +239,7 @@ var app = new Vue({
         return this.cart.reduce(function(total, product){
           return total + (product.amount * product.price);
         }, 0);
-      }
+      },
     },
     created:function(){
     }

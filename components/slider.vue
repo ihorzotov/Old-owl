@@ -8,7 +8,7 @@
       </section>
       <div class="section-slider__nav">
         <slot name="link"></slot>
-        <div class="slider-control flex-c-c">
+        <div class="slider-control flex-c-c" v-if="pagesLength != 1">
           <button class="slider-button btn-prev" @click="slidePrev">
             <i class="icon-uniE935"></i>
           </button>
@@ -46,7 +46,7 @@
           {title: 'Slide 12'}
         ],
         perPage: {
-          desktop: 4,
+          desktop: (this.dataDesktop != undefined)? this.dataDesktop : 4,
           tablet: 2,
           mobile: 1,
         },
@@ -58,31 +58,23 @@
         //slideClasses: []
       }
     },
-    props:['sliderName'],
+    props:['sliderName','dataDesktop'],
     mounted: function(){
       console.log(this.$slots);
     },
     created: function(){
-      // this.slideClassesInit();
-      // console.log(this.slideClasses);
-    },
-    render: function (createElement) {
-      console.log(this.$scopedSlots['slider-content']);
     },
     methods: {
       slidePrev: function(){
         return currentPage >= 2? currentPage-- : null;
       },
       slideNext: function(){
+        console.log(this.perPage.desktop);
         return this.currentPage <= (this.pagesLength -1 )? this.currentPage++ : null;
-      },
-      navClick: function(){
-        console.log('nav-click');
       },
       isBetween: function(index){
         this.lastCurrentItem = this.perPage[this.currentScreen] * this.currentPage;
         this.firstCurrentItem = this.lastCurrentItem - this.perPage[this.currentScreen] + 1;
-
         index++;
         
         return index >= this.firstCurrentItem && index <= this.lastCurrentItem? true: false;
@@ -139,7 +131,6 @@
           if(this.isBetween(i))
             array.push('current');
         }
-
         return array;
       }
       
@@ -150,6 +141,10 @@
   .section-slider.product-margin .slider {
     margin-left: -10px;
   }
+  .section-slider.collection-margin .slider {
+    margin: 0 0 -35px -30px;
+  }
+  
   .section-slider.slider-reviews .slider{
     margin-left: -30px;
   }
@@ -183,11 +178,6 @@
     top: 2px;
     transform: rotate(90deg);
   }
-
-  .section-slider .collections-card + .collections-card {
-    margin-top: 35px;
-  }
-
   .slider-control .slider-button {
     width: 34px;
     height: 34px;

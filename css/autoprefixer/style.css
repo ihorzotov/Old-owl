@@ -2401,11 +2401,11 @@ textarea.form-input {
   margin-top: 13px;
 }
 
-.account-menu__list li.active span {
+.account-menu__list li.active a {
   color: #ffa700 !important;
 }
 
-.account-menu__list span {
+.account-menu__list a {
   color: #929292;
   font-weight: 200;
   -webkit-transition: color .3s;
@@ -2601,6 +2601,7 @@ textarea.form-input {
 }
 
 .delivery-stages .content {
+  cursor: pointer;
   margin-bottom: 26px;
 }
 

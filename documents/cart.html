@@ -44,7 +44,7 @@
             </ul>
             <ul class="header-nav flex-c">
               <li class="header-nav__item item-bag items">
-                <a href="#" data-product="1"><i class="icon-bag"></i></a>
+                <a href="#" :data-product="productLenght"><i class="icon-bag"></i></a>
               </li>
               <li class="header-nav__item active--border" :class="{ active: (isActiveMenu == 'search') }" @click="toggleClass('search')">
                 <span class="title"><i class="icon-search"></i></span>
@@ -223,13 +223,10 @@
           <li class="breadcrumbs__item">
             <a href="#">Cart</a>
           </li>
-          <li class="breadcrumbs__item">
-            <a>Ship to</a>
-          </li>
         </ul>
       </div>
       <div class="wrapper">
-        <p class="page-title">Ship to</p>
+        <p class="page-title">cart</p>
         <div class="block-cart flex-s">
           <div class="block-cart__content">
             <div class="cart-product__titles flex-c">
