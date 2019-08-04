@@ -23,12 +23,14 @@
     },
     methods: {
     },
+    computed: {
+    }
   }
 </script>
 <style scoped>
   .collections-card{
     width: calc(50% - 30px);
-    margin: 0 0 35px 30px;
+    margin: 0 0 35px 0;
   }
   .collections-card__img {
     width: 255px;
@@ -105,7 +107,7 @@
   }
   @media (max-width: 1139px){
     .collections-card{
-      width: calc(100% - 30px);
+      width: 100%;
     }
     .collections-card__content {
       width: calc(100% - 300px);

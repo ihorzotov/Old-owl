@@ -34,7 +34,7 @@
   .nav-dropdown__item:hover {
     color: #d48a00;
   }
-  .social-buttons__item:hover, .breadcrumbs__item:hover, .close-modal:hover, .ordered-item:hover .name, .item-bag__card a:hover {
+  .social-buttons__item:hover, .breadcrumbs__item:hover, .close-modal:hover, .ordered-item:hover .name, .item-bag__card a:hover, .modal-review .close-modal:hover {
     color: #ffa700;
   }
   .product-card:hover {
@@ -77,6 +77,13 @@
   }
   .product-colors .container .checkmark:hover {
     box-shadow: 0 0 12px 0;
+  }
+  .reviews-card .reviews-container:hover:before, .reviews-card .reviews-container:hover:after, .reviews-card .reviews-container:hover .reviews-container__content {
+    background: #282828;
+  }
+  .reviews-card .show-more:hover {
+    color: #ffa700;
+    border-bottom: 1px solid #ffa700;
   }
 }
 
@@ -1225,6 +1232,9 @@
   }
   .modal-form .privacy {
     width: 100%;
+  }
+  .modal-review .reviews-card {
+    width: calc(100% - 90px);
   }
   .social-authentication {
     width: 100%;

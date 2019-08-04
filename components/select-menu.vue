@@ -18,8 +18,6 @@
     },
     props: ['dataContent', 'dataTarget'],
     methods: {
-      console:function(){
-      }
     },
     created:function(){
     }

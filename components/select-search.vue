@@ -1,12 +1,13 @@
 <template>
   <div class="wrap-drop" @click="toggleClass(), search = ''" :class="{active: isActive}">
     <label class="form-label">
-      <input type="text" class="form-input" v-model="search"@click="toggleClass()">
+      <input type="hidden" class="form-input" v-model="currentKey">
+      <input type="text" class="form-input" v-model="search" @click="toggleClass()" :name="name">
       <div class="selected-el el-c" v-if="!isActive"><span>{{ currentIndex }}</span></div>
     </label>
     <div class="wrap-drop__container">
       <ul class="drop">
-        <li v-bind:class="{ selected: currentIndex == data['' + key + ''] }" @click="(currentIndex = data[''+ key +''])" v-for='(item, key) in result'>{{ item }}</li>
+        <li v-bind:class="{ selected: currentIndex == data['' + key + ''] }" @click="makeSelection(key)" v-for='(item, key) in result'>{{ item }}</li>
         <li class="notfound">Not found</li>
       </ul>
     </div>
@@ -20,22 +21,32 @@
       return {
         data: this.dataContent,
         currentIndex: Object.values(this.dataContent)[0],
+        currentKey: Object.values(this.dataContent)[0],
         search: '',
+        name: this.dataName,
         isActive: false,
       }
     },
-    props: ['dataContent'],
+    props: ['dataContent', 'dataName'],
     methods: {
+        makeSelection: function(key){
+            this.currentIndex = this.data[''+ key +''];
+            this.currentKey = key;
+        },
       toggleClass: function(){
         this.isActive = !this.isActive;
       },
     },
+      created: function(){
+        console.log('contri', this.dataContent);
+      },
     computed:{
       result:function(){
         var result = {},
             rgxp = new RegExp(this.search, 'i');
 
         if(this.search == ''){
+            //console.log('no', this.dataContent);
           return this.data;
         }
 
@@ -47,8 +58,6 @@
 
         return result;
       },
-    },
-    created:function(){
     }
   }
 </script>

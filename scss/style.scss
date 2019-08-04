@@ -489,7 +489,7 @@ textarea.form-input{
         border: solid #110b00;
         border-width: 0 1px 1px 0;
         transform: translate(-50% , -50%) rotate(45deg);
-        transition: border.3s;
+        transition: border .3s;
       }
     }
   }
@@ -1116,9 +1116,9 @@ textarea.form-input{
     left: 0;
     position: absolute;
     height: 45px;
+    background-image: -ms-linear-gradient( 90deg, rgba(17,17,17,0) 0%, rgb(17,17,17) 100%);
     background-image: -moz-linear-gradient( 90deg, rgba(17,17,17,0) 0%, rgb(17,17,17) 100%);
     background-image: -webkit-linear-gradient( 90deg, rgba(17,17,17,0) 0%, rgb(17,17,17) 100%);
-    background-image: -ms-linear-gradient( 90deg, rgba(17,17,17,0) 0%, rgb(17,17,17) 100%);
   }
   .advantages-card{
     img{
@@ -1471,6 +1471,12 @@ textarea.form-input{
 }
 /**/
 /*block-shop*/
+.block-shop .no-items{
+  text-align: center;
+  width: 100%;
+  padding-left: 30px;
+  margin-top: 20px;
+}
 .shop-aside{
   width: 255px;
   margin-right: 25px;
@@ -2313,6 +2319,18 @@ textarea.form-input{
   }
 }
 /**/
+.block-users{
+  .block-subscribe{
+	.wrapper{
+      justify-content: space-between;
+      padding: 0;
+      max-width: 100%;
+	}
+  }
+  &__content{
+	width: calc(50% - 15px);
+  }
+}
 /*=========================*/
 /*FOOTER*/
 .footer{
@@ -2443,7 +2461,7 @@ textarea.form-input{
   .page-title{
     font-size: 48px;
     text-align: center;
-    margin-bottom: -5px;
+    margin-bottom: 0;
     line-height: 1;
   }
   .act{
@@ -2538,6 +2556,32 @@ textarea.form-input{
     }
   }
 }
+.modal-review{
+  .reviews-card{
+	width: 100%;
+	position: relative;
+	max-width: 450px;
+	.close-modal{
+	  right: -35px;
+      top: -35px;
+      font-size: 14px;
+      color: #fff;
+	}
+	.reviews-container{
+	  height: auto;
+	  .text{
+		max-height: 100%;
+		overflow: visible;  
+	  }
+	  &__content{
+		max-height: initial;
+		position: relative;
+		left: auto;
+		transform: translate(0);
+	  }
+	}
+  }
+}
 .reviews-container{
   flex-direction: column;
   .form-label{
@@ -2591,6 +2635,113 @@ textarea.form-input{
     transition: background .3s;
   }
 }
+
+// reviev-card
+.reviews-card .reviews-container {
+  position: relative;
+  height: 230px;
+  margin-bottom: 30px;
+}
+
+.reviews-card .reviews-container:before, .reviews-card .reviews-container:after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: #1b1b1b;
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%) rotate(45deg);
+  transition: background .3s;
+}
+
+.reviews-card .reviews-container:before {
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
+}
+
+.reviews-card .reviews-container:after {
+  z-index: 2;
+  border-radius: 100% 0 0 0;
+}
+
+.reviews-card .reviews-container__content {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  background: #1b1b1b;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.3);
+  min-height: 230px;
+  max-height: 230px;
+  padding: 23px 30px 20px 55px;
+  z-index: 1;
+  transition: width .4s, max-height 1s , background .3s;
+}
+
+.reviews-card .reviews-container .title {
+  font-size: 14px;
+  font-weight: 200;
+  position: relative;
+}
+
+.reviews-card .reviews-container .title:before {
+  content: '“';
+  color: #fff;
+  font-size: 60px;
+  position: absolute;
+  top: -6px;
+  left: -30px;
+  line-height: 1;
+}
+
+.reviews-card .reviews-container .name {
+  color: #fff;
+  overflow: hidden;
+  height: 24px;
+  margin-bottom: 13px;
+}
+
+.reviews-card .reviews-container .text {
+  font-size: 14px;
+  font-weight: 200;
+  height: 100%;
+  max-height: 96px;
+  overflow: hidden;
+}
+
+.reviews-card .reviews-container .show-more {
+  font-size: 14px;
+  font-weight: 200;
+  color: #fff;
+  line-height: 1;
+  border-bottom: 1px solid #fff;
+  position: absolute;
+  bottom: 29px;
+  cursor: pointer;
+  transition: color .3s , border .3s;
+}
+
+.reviews-card .reviews-container .show-more:before {
+  content: 'Read all';
+}
+
+.reviews-card .reviews-person__img {
+  margin: 0px auto 6px;
+  width: 50px;
+  height: 50px;
+  background: 50% 50% no-repeat;
+  background-size: cover;
+}
+
+.reviews-card .reviews-person__name {
+  color: #fff;
+  font-weight: 200;
+  text-align: center;
+}
+// 
+
 .social-authentication{
   align-self: center;
 }

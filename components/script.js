@@ -42,40 +42,79 @@ var app = new Vue({
         {
           name: 'Big Back Patches',
           img: './img/product.png',
-          link:'123',
+          link:'/documents/shop.html',
           quantity:1,
         },
         {
           name: 'Big Back Patches',
           img: './img/product.png',
-          link:'',
+          link:'/documents/shop.html',
           quantity:2,
         },
         {
           name: 'Big Back Patches',
           img: './img/product.png',
-          link:'',
+          link:'/documents/shop.html',
           quantity:3,
         },
         {
           name: 'Big Back Patches',
           img: './img/product.png',
-          link:'',
+          link:'/documents/shop.html',
+          quantity:4,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'/documents/shop.html',
+          quantity:1,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'/documents/shop.html',
+          quantity:2,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'/documents/shop.html',
+          quantity:3,
+        },
+        {
+          name: 'Big Back Patches',
+          img: './img/product.png',
+          link:'/documents/shop.html',
           quantity:4,
         },
       ],
+      perPage: {
+	    desktop: 4,
+	    tablet: 2,
+	    mobile: 1,
+	  },
       products: [
         {
-          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
-          img: './img/product.png',
+          name: "1Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/photo.png',
           oldPrice:'US $40.91',
           price:'$32.91',
           action:'-40%',
+          link: '/documents/product.html',
+        },
+        {
+          name: "1Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/footer-logo.png',
+          oldPrice:'US $40.91',
+          price:'$32.91',
+          action:'-40%',
+          link: '/documents/product.html',
         },
         {
           name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
           img: './img/product.png',
           price:'US $32.91',
+          link: '/documents/product.html',
         },
         {
           name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
@@ -83,11 +122,40 @@ var app = new Vue({
           oldPrice:'US $40.91',
           price:'$32.91',
           action:'new',
+          link: '/documents/product.html',
         },
         {
           name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
           img: './img/product.png',
           price:'US $32.91',
+          link: '/documents/product.html',
+        },{
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          oldPrice:'US $40.91',
+          price:'$32.91',
+          action:'-40%',
+          link: '/documents/product.html',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          price:'US $32.91',
+          link: '/documents/product.html',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          oldPrice:'US $40.91',
+          price:'$32.91',
+          action:'new',
+          link: '/documents/product.html',
+        },
+        {
+          name: "Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
+          img: './img/product.png',
+          price:'US $32.91',
+          link: '/documents/product.html',
         },
       ],
       currentImage: 0,
@@ -99,6 +167,7 @@ var app = new Vue({
         '../img/product.png',
         '../img/product.png',
       ],
+      currentScreen: 'desktop',
       countries:{
         al:'Albania',
         al:'Aljir',
@@ -159,12 +228,6 @@ var app = new Vue({
           amount:1,
           price: 40.12,
         },
-        {
-          image:"../img/product.png",
-          name:"6Big Back patch Thor's Hammer & Ravens Viking Mjolnir",
-          amount:2,
-          price: 20,
-        }
       ],
       colors:[
         '255, 255, 255',
@@ -178,12 +241,18 @@ var app = new Vue({
       recepient: 'user',
       address:'user-address',
       productLenght:0,
+      sliderWidth: null,
+      fullReviev: null,
     },
     mixins: [toggle],
     mounted: function(){
+
+         this.$nextTick(function() {
+           window.addEventListener('resize', this.setResolution, this.cutGroup);
+         });
     },
     methods: {
-      hideScroll:function(){
+      hideScroll:function(index){
         var html = document.querySelector("html");
 
         this.isScroll = !this.isScroll;
@@ -192,6 +261,7 @@ var app = new Vue({
         }else{
           html.classList.remove('overflow');
         }
+        this.fullReviev = index;
       },
       onFileChange: function(e){
         var file = e.target.files[0];
@@ -220,6 +290,31 @@ var app = new Vue({
           item.amount = 1;
         }
       },
+      cutGroup: function(data){
+	    var i,j,temparray = [],chunk = this.perPage[this.currentScreen];
+	    
+		for (i=0,j=data.length; i<j; i+=chunk) {
+		    temparray.push(data.slice(i, i+chunk));
+		}
+		
+		return temparray;
+	  },
+	  removeFromList: function(item){
+	  },
+	  detectWidth:function(){
+        window.addEventListener('resize', this.setResolution);
+      },
+      setResolution: function(){
+        var screenWidth = document.documentElement.clientWidth;
+        
+        if(screenWidth < 720){
+          this.currentScreen = 'mobile';
+        }else if( screenWidth < 1140 ){
+          this.currentScreen = 'tablet';
+        }else{
+          this.currentScreen = 'desktop';
+        };
+      },
     },
     watch:{
       cart:{
@@ -242,5 +337,6 @@ var app = new Vue({
       },
     },
     created:function(){
+	  this.setResolution();
     }
 });

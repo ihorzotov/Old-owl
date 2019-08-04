@@ -25,16 +25,16 @@
             </div>
             <ul class="header-filter flex-c">
               <li class="header-filter__item">
-                <a href="#" class="title">Big Back Patches</a>
+                <a href="/documents/shop.html" class="title">Big Back Patches</a>
               </li>
               <li class="header-filter__item">
-                <a href="#" class="title">Black Metal</a></li>
+                <a href="/documents/shop.html" class="title">Black Metal</a></li>
               <li class="header-filter__item">
-                <a href="#" class="title">Rock Thrash Heavy Doom</a></li>
+                <a href="/documents/shop.html" class="title">Rock Thrash Heavy Doom</a></li>
               <li class="header-filter__item">
-                <a href="#" class="title">Viking Patches</a></li>
+                <a href="/documents/shop.html" class="title">Viking Patches</a></li>
               <li class="header-filter__item">
-                <a href="#" class="title">T-Shirts</a>
+                <a href="/documents/shop.html" class="title">T-Shirts</a>
               </li>
               <li class="header-filter__item dropdown-item active--border" :class="{ active: (isActiveMenu == 'all') }" @click="toggleClass('all')">
                 <span class="title dsc-title">all</span>
@@ -44,7 +44,7 @@
             </ul>
             <ul class="header-nav flex-c">
               <li class="header-nav__item item-bag items">
-                <a href="#" :data-product="productLenght"><i class="icon-bag"></i></a>
+                <a href="/documents/cart.html" :data-product="productLenght"><i class="icon-bag"></i></a>
               </li>
               <li class="header-nav__item active--border" :class="{ active: (isActiveMenu == 'search') }" @click="toggleClass('search')">
                 <span class="title"><i class="icon-search"></i></span>
@@ -111,17 +111,17 @@
         <div class="dropdown-content" :class="{active: (isActiveMenu == 'menu')}">
           <div class="wrapper">
             <div class="hambuger-menu flex-s ct-prt">
-              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+              <a href="documents/payment&delivery.html" class="hambuger-menu__element dropdown-hover ct33">
                 <img src="img/payment.svg" alt="">
                 <p class="title">payment & delivery</p>
                 <span class="text">Find out everything about the payment and delivery of the purchase</span>
               </a>
-              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+              <a href="documents/contacts.html" class="hambuger-menu__element dropdown-hover ct33">
                 <img src="img/contact.svg" alt="">
                 <p class="title">contact</p>
                 <span class="text">Here you can always contact us if you have any questions </span>
               </a>
-              <a href="#" class="hambuger-menu__element dropdown-hover ct33">
+              <a href="documents/faq.html" class="hambuger-menu__element dropdown-hover ct33">
                 <img src="img/faq.svg" alt="">
                 <p class="title">FAQ</p>
                 <span class="text">We have prepared a list of frequently asked questions and answers to them</span>
@@ -268,48 +268,73 @@
           </div>
         </div>
       </div>
-<!-- el.className -->
-    <slider class="product-margin" slider-name="the latest">
-      <template v-slot:slider-content>
-        <productCard
-          v-for="(product, index) in products"
-          :data-product="product"
-          :key="index">
-        </productCard>
-      </template>
-      <template v-slot:link>
-        <a href="/product" class="link arrow">To the shop</a>
-      </template>
-    </slider>
+      <slider class="product-margin" 
+        		  slider-name="the latest"
+        	    :data-ppage="perPage"   
+        	    :data-current-screen="currentScreen"
+        >
+            <template v-slot:slider-content>
+              
+              <template  v-for="(productsGroup, index) in cutGroup(products)">
+                 	<div class="slide-list" :class="{current: (index == 0)}">
+	                  <div class="slide-list__content flex-c" :style="{ width: sliderWidth +'px' }"> 
 
-    <slider class="collection-margin" slider-name="collections">
+	                    <productCard v-for="(product, index) in productsGroup"
+	                      :data-product="product"
+	                      :key="index">
+	                    </productCard>
+	                  
+	                  </div>
+                 	</div>
+              </template>
+              
+            </template>
+            
+            <template v-slot:link>
+                <a href="/products" class="link arrow">To the shop</a>
+            </template>
+        </slider>
+        
+    <slider class="collection-margin" 
+				slider-name="collections" 
+				:data-ppage="perPage" 
+			  :data-current-screen="currentScreen"
+		>
       <template v-slot:slider-content>
-        <collectioncard
-          v-for="(item, index) in collections"
-          :data-collection="item"
-          :key="index"
-          >
-        </collectioncard>
+          <template  v-for="(collectionsGroup, index) in cutGroup(collections)">
+              <div class="slide-list" :class="{current: (index == 0)}">
+              <div class="slide-list__content flex-c" :style="{ width: sliderWidth +'px' }"> 
+                  <collectioncard  v-for="(item, index) in collectionsGroup"
+                    :data-collection="item"
+                    :key="index"
+                  ></collectioncard>
+                </div>
+              </div>
+          </template>
       </template>
     </slider>
-    <slider 
-      class="slider-reviews" 
-      slider-name="our happy clients" 
-      :data-desktop='3'
+    <slider class="slider-reviews" 
+    		slider-name="our happy clients" 
+    		:data-ppage="perPage"   
+    		:data-current-screen="currentScreen"
     >
-      <template #slider-content="el">
-        <reviewCard
-          v-on:change="hideScroll"
-          v-for="(review, index) in reviews"
-          :data-index="index"
-          :data-review="review"
-          :key="index"
-          :data-class="el.slideClasses[index]">
-        </reviewCard>
-      </template>
-      <template v-slot:link>
-        <span class="link" @click="toggleClass('review'),hideScroll()">Leave feedback</span>
-      </template>
+        <template v-slot:slider-content>
+          <template  v-for="(reviewsGroup, index) in cutGroup(reviews)">
+                <div class="slide-list" :class="{current: (index == 0)}">
+                <div class="slide-list__content flex-c" :style="{ width: sliderWidth +'px' }">
+                    <reviewCard   v-for="(review, index) in reviewsGroup"
+                      v-on:change="hideScroll"
+                      :data-index="index"
+                      :data-review="review"
+                      :key="index">
+                    </reviewCard>
+                  </div>
+                </div>
+          </template>
+        </template>
+        <template v-slot:link>
+            <span class="link" @click="toggleClass('review'),hideScroll()">Leave feedback</span>
+        </template>
     </slider>
     <form action="" method="post" class="block-subscribe blk-margin">
       <div class="thx-block"><!-- active -->
@@ -331,6 +356,24 @@
         <p class="text">If you see that I violate your copyright, write me an e-mail <a href="mailto:oldowl.info@gmail.com">oldowl.info@gmail.com</a>, I will remove this item from my range.</p>
       </div>
     </div>
+    <div class="modal modal-review" :class="{ active:(fullReviev != null)}" v-if="fullReviev != null">
+        <div class="modal__content">
+          <div class="reviews-card ">
+	        <span class="close-modal" @click="hideScroll(), fullReviev = null"><i class="icon-uniE10A"></i></span>
+		    <div class="reviews-container">
+			 <div class="reviews-container__content">
+			    <p class="title">Name of patch: </p>
+			    <h2 class="name"> @{{ reviews[fullReviev].title}} </h2>
+			    <p class="text" ref="textElement"> @{{ reviews[fullReviev].text }} </p>
+			 </div>
+			</div>
+			<div class="reviews-person">
+			  <div class="reviews-person__img" :style="{ backgroundImage: 'url( ' + reviews[fullReviev].img + ' )' }"></div>
+			    <p class="reviews-person__name"> @{{ reviews[fullReviev].name }} </p>
+			  </div>
+	        </div> 
+        </div>
+     </div>
     </main>
     <footer class="footer">
       <div class="modal" :class="{ active: (isActiveMenu == 'login') }">
